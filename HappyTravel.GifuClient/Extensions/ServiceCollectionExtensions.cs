@@ -11,27 +11,27 @@ namespace HappyTravel.GifuClient.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddVccService(this IServiceCollection services, Action<GifuClientOptions> options)
+        public static IServiceCollection AddVccService(this IServiceCollection services, Action<VccClientOptions> options)
         {
-            var gifuClientOptions = new GifuClientOptions();
-            options.Invoke(gifuClientOptions);
+            var vccClientOptions = new VccClientOptions();
+            options.Invoke(vccClientOptions);
             
-            services.Configure<GifuHttpClientOptions>(o =>
+            services.Configure<HttpClientOptions>(o =>
             {
-                o.Endpoint = gifuClientOptions.VccEndpoint;
+                o.Endpoint = vccClientOptions.VccEndpoint;
             });
             
             services.AddAccessTokenManagement(o =>
             {
                 o.Client.Clients.Add(HttpClientNames.Identity, new ClientCredentialsTokenRequest
                 {
-                    Address = gifuClientOptions.IdentityEndpoint,
-                    ClientId = gifuClientOptions.IdentityClient,
-                    ClientSecret = gifuClientOptions.IdentitySecret
+                    Address = vccClientOptions.IdentityEndpoint,
+                    ClientId = vccClientOptions.IdentityClient,
+                    ClientSecret = vccClientOptions.IdentitySecret
                 });
             });
             
-            services.AddHttpClient(HttpClientNames.GifuClient)
+            services.AddHttpClient(HttpClientNames.ApiClient)
                 .AddPolicyHandler(GetRetryPolicy())
                 .AddClientAccessTokenHandler(HttpClientNames.Identity);
             

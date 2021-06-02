@@ -1,6 +1,6 @@
 ﻿namespace HappyTravel.GifuClient.Options
 {
-    public class GifuClientOptions
+    public class VccClientOptions
     {
         public string VccEndpoint { get; set; } = string.Empty;
         public string IdentityEndpoint { get; set; } = string.Empty;

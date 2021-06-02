@@ -13,7 +13,7 @@ namespace HappyTravel.GifuClient.Services
 {
     public class VccService : IVccService
     {
-        public VccService(IHttpClientFactory clientFactory, IOptions<GifuHttpClientOptions> options)
+        public VccService(IHttpClientFactory clientFactory, IOptions<HttpClientOptions> options)
         {
             _clientFactory = clientFactory;
             _options = options.Value;
@@ -22,7 +22,7 @@ namespace HappyTravel.GifuClient.Services
         
         public async Task<Result<VirtualCreditCard>> IssueVirtualCreditCard(string referenceCode, MoneyAmount moneyAmount, DateTime dueDate)
         {
-            using var client = _clientFactory.CreateClient(HttpClientNames.GifuClient);
+            using var client = _clientFactory.CreateClient(HttpClientNames.ApiClient);
             
             var request = new HttpRequestMessage(HttpMethod.Post, _options.Endpoint)
             {
@@ -50,6 +50,6 @@ namespace HappyTravel.GifuClient.Services
 
 
         private readonly IHttpClientFactory _clientFactory;
-        private readonly GifuHttpClientOptions _options;
+        private readonly HttpClientOptions _options;
     }
 }
