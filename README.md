@@ -13,7 +13,7 @@ Client implemented service for issuing virtual credit cards in Gifu service
 ### Usage
 #### Configure client
 ```c#
-using HappyTravel.GifuClient.Extensions;
+using HappyTravel.VccServiceClient.Extensions;
 
 public class Startup
 {
@@ -31,8 +31,8 @@ public class Startup
 ```
 #### Inject service and use
 ```c#
-using HappyTravel.GifuClient.Models;
-using HappyTravel.GifuClient.Services;
+using HappyTravel.VccServiceClient.Models;
+using HappyTravel.VccServiceClient.Services;
 
 public class SomeService
 {

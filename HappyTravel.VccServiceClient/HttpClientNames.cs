@@ -1,4 +1,4 @@
-﻿namespace HappyTravel.GifuClient
+﻿namespace HappyTravel.VccServiceClient
 {
     internal static class HttpClientNames
     {

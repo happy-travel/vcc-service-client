@@ -4,13 +4,13 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using CSharpFunctionalExtensions;
-using HappyTravel.GifuClient.Models;
-using HappyTravel.GifuClient.Options;
 using HappyTravel.Money.Models;
+using HappyTravel.VccServiceClient.Models;
+using HappyTravel.VccServiceClient.Options;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 
-namespace HappyTravel.GifuClient.Services
+namespace HappyTravel.VccServiceClient.Services
 {
     public class VccService : IVccService
     {

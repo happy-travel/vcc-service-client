@@ -1,4 +1,4 @@
-﻿namespace HappyTravel.GifuClient.Options
+﻿namespace HappyTravel.VccServiceClient.Options
 {
     public class VccClientOptions
     {

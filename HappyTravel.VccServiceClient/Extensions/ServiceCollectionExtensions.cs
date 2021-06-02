@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Net.Http;
-using HappyTravel.GifuClient.Options;
-using HappyTravel.GifuClient.Services;
+using HappyTravel.VccServiceClient.Options;
+using HappyTravel.VccServiceClient.Services;
 using IdentityModel.Client;
 using Microsoft.Extensions.DependencyInjection;
 using Polly;
 using Polly.Extensions.Http;
 
-namespace HappyTravel.GifuClient.Extensions
+namespace HappyTravel.VccServiceClient.Extensions
 {
     public static class ServiceCollectionExtensions
     {

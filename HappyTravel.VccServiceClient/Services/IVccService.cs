@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
 using CSharpFunctionalExtensions;
-using HappyTravel.GifuClient.Models;
 using HappyTravel.Money.Models;
+using HappyTravel.VccServiceClient.Models;
 
-namespace HappyTravel.GifuClient.Services
+namespace HappyTravel.VccServiceClient.Services
 {
     public interface IVccService
     {

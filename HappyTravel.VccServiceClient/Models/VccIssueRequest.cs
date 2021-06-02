@@ -1,7 +1,7 @@
 ﻿using System;
 using HappyTravel.Money.Models;
 
-namespace HappyTravel.GifuClient.Models
+namespace HappyTravel.VccServiceClient.Models
 {
     internal readonly struct VccIssueRequest
     {

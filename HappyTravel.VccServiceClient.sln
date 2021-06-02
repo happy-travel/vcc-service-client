@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HappyTravel.GifuClient", "HappyTravel.GifuClient\HappyTravel.GifuClient.csproj", "{2846FD9A-0057-48C5-9AE7-AE4E20CF0015}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HappyTravel.VccServiceClient", "HappyTravel.VccServiceClient\HappyTravel.VccServiceClient.csproj", "{2846FD9A-0057-48C5-9AE7-AE4E20CF0015}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

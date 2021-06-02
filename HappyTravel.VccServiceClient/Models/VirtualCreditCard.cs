@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HappyTravel.GifuClient.Models
+namespace HappyTravel.VccServiceClient.Models
 {
     public readonly struct VirtualCreditCard
     {
