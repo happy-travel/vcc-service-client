@@ -18,7 +18,7 @@ namespace HappyTravel.GifuClient.Extensions
             
             services.Configure<GifuHttpClientOptions>(o =>
             {
-                o.Endpoint = gifuClientOptions.GifuEndpoint;
+                o.Endpoint = gifuClientOptions.VccEndpoint;
             });
             
             services.AddAccessTokenManagement(o =>
