@@ -6,7 +6,7 @@ using HappyTravel.Money.Models;
 
 namespace HappyTravel.GifuClient.Services
 {
-    public interface IGifuService
+    public interface IVccService
     {
         Task<Result<VirtualCreditCard>> IssueVirtualCreditCard(string referenceCode, MoneyAmount moneyAmount, DateTime dueDate);
     }

@@ -11,7 +11,7 @@ namespace HappyTravel.GifuClient.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddGifuService(this IServiceCollection services, Action<GifuClientOptions> options)
+        public static IServiceCollection AddVccService(this IServiceCollection services, Action<GifuClientOptions> options)
         {
             var gifuClientOptions = new GifuClientOptions();
             options.Invoke(gifuClientOptions);
@@ -35,7 +35,7 @@ namespace HappyTravel.GifuClient.Extensions
                 .AddPolicyHandler(GetRetryPolicy())
                 .AddClientAccessTokenHandler(HttpClientNames.Identity);
             
-            services.AddTransient<IGifuService, Services.GifuService>();
+            services.AddTransient<IVccService, VccService>();
             return services;
         }
         

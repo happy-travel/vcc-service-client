@@ -11,9 +11,9 @@ using Microsoft.Extensions.Options;
 
 namespace HappyTravel.GifuClient.Services
 {
-    public class GifuService : IGifuService
+    public class VccService : IVccService
     {
-        public GifuService(IHttpClientFactory clientFactory, IOptions<GifuHttpClientOptions> options)
+        public VccService(IHttpClientFactory clientFactory, IOptions<GifuHttpClientOptions> options)
         {
             _clientFactory = clientFactory;
             _options = options.Value;

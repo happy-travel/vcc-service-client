@@ -5,7 +5,7 @@ Client for Gifu Service (Virtual credit card issuer)
 Client implemented service for issuing virtual credit cards in Gifu service
 
 ### Options
-- GifuEndpoint - endpoint for Gifu service
+- VccEndpoint - endpoint for VCC service
 - IdentityEndpoint - token endpoint for IdentityServer
 - IdentityClient - IdentityServer client with 'vcc_service' scope
 - IdentitySecret - IdentityServer client's password
@@ -20,7 +20,7 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         services..AddGifuService(options => {
-            options.GifuEndpoint = "api endpoint for Gifu service",
+            options.VccEndpoint = "api endpoint for VCC service",
             options.IdentityEndpoint = "token endpoint for IdentityServer",
             options.IdentityClient = "client",
             options.IdentitySecret = "password"
@@ -36,14 +36,14 @@ using HappyTravel.GifuClient.Services;
 
 public class SomeService
 {
-    public SomeService(GifuService gifuService)
+    public SomeService(IVccService vccService)
     {
-        _gifuService = gifuService;
+        _vccService = vccService;
     }
     
     public async Task SomeMethod()
     {
-        var (_, isFailure, virtualCreditCard, error) = await _gifuService.IssueVirtualCreditCard(referenceCode, moneyAmount, dueDate);
+        var (_, isFailure, virtualCreditCard, error) = await _vccService.IssueVirtualCreditCard(referenceCode, moneyAmount, dueDate);
     }
 }
 ```
