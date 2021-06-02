@@ -2,7 +2,7 @@
 Client for VCC Service (Virtual credit card issuer)
 
 ### Description
-Client implemented service for issuing virtual credit cards in Gifu service
+Client implemented service for issuing virtual credit cards in VCC service
 
 ### Options
 - VccEndpoint - endpoint for VCC service
@@ -19,7 +19,7 @@ public class Startup
 {
     public void ConfigureServices(IServiceCollection services)
     {
-        services..AddGifuService(options => {
+        services..AddVccService(options => {
             options.VccEndpoint = "api endpoint for VCC service",
             options.IdentityEndpoint = "token endpoint for IdentityServer",
             options.IdentityClient = "client",
