@@ -13,7 +13,7 @@
     <PackageProjectUrl>https://github.com/happy-travel/gifu-client</PackageProjectUrl>
     <RepositoryURL>https://github.com/happy-travel/gifu-client</RepositoryURL>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>1.0.0</Version>
+    <Version>0.8.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
