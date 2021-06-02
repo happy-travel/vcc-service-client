@@ -10,8 +10,8 @@
     <NeutralLanguage>en</NeutralLanguage>
     <Description>Client for VCC service</Description>
     <PackageReleaseNotes>First release</PackageReleaseNotes>
-    <PackageProjectUrl>https://github.com/happy-travel/gifu-client</PackageProjectUrl>
-    <RepositoryURL>https://github.com/happy-travel/gifu-client</RepositoryURL>
+    <PackageProjectUrl>https://github.com/happy-travel/vcc-service-client</PackageProjectUrl>
+    <RepositoryURL>https://github.com/happy-travel/vcc-service-client</RepositoryURL>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Version>0.8.0</Version>
   </PropertyGroup>

@@ -1,5 +1,5 @@
-# gifu-client
-Client for Gifu Service (Virtual credit card issuer)
+# vcc-service-client
+Client for VCC Service (Virtual credit card issuer)
 
 ### Description
 Client implemented service for issuing virtual credit cards in Gifu service
