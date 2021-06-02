@@ -7,6 +7,7 @@ using CSharpFunctionalExtensions;
 using HappyTravel.GifuClient.Models;
 using HappyTravel.GifuClient.Options;
 using HappyTravel.Money.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 
 namespace HappyTravel.GifuClient.Services
