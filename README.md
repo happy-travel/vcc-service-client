@@ -5,10 +5,11 @@ Client for VCC Service (Virtual credit card issuer)
 Client implemented service for issuing virtual credit cards in VCC service
 
 ### Options
-- VccEndpoint - endpoint for VCC service
-- IdentityEndpoint - token endpoint for IdentityServer
-- IdentityClient - IdentityServer client with 'vcc_service' scope
-- IdentitySecret - IdentityServer client's password
+- VccEndpoint - endpoint for VCC service (**required**)
+- IdentityEndpoint - token endpoint for IdentityServer (**required**)
+- IdentityClient - IdentityServer client with 'vcc_service' scope (**required**)
+- IdentitySecret - IdentityServer client's password (**required**)
+- RetryPolicy - delegate which returns IAsyncPolicy<HttpResponseMessage> (**optional**)
 
 ### Usage
 #### Configure client
