@@ -18,21 +18,21 @@ namespace HappyTravel.VccServiceClient.Extensions
             
             services.Configure<HttpClientOptions>(o =>
             {
-                o.Endpoint = vccClientOptions.VccEndpoint;
+                o.Endpoint = GetValueOrThrow(vccClientOptions.VccEndpoint);
             });
             
             services.AddAccessTokenManagement(o =>
             {
                 o.Client.Clients.Add(HttpClientNames.Identity, new ClientCredentialsTokenRequest
                 {
-                    Address = vccClientOptions.IdentityEndpoint,
-                    ClientId = vccClientOptions.IdentityClient,
-                    ClientSecret = vccClientOptions.IdentitySecret
+                    Address = GetValueOrThrow(vccClientOptions.IdentityEndpoint),
+                    ClientId = GetValueOrThrow(vccClientOptions.IdentityClient),
+                    ClientSecret = GetValueOrThrow(vccClientOptions.IdentitySecret)
                 });
             });
             
             services.AddHttpClient(HttpClientNames.ApiClient)
-                .AddPolicyHandler(GetRetryPolicy())
+                .AddPolicyHandler(vccClientOptions.RetryPolicy ?? GetDefaultRetryPolicy())
                 .AddClientAccessTokenHandler(HttpClientNames.Identity);
             
             services.AddTransient<IVccService, VccService>();
@@ -40,9 +40,15 @@ namespace HappyTravel.VccServiceClient.Extensions
         }
         
         
-        private static IAsyncPolicy<HttpResponseMessage> GetRetryPolicy() 
+        private static IAsyncPolicy<HttpResponseMessage> GetDefaultRetryPolicy() 
             => HttpPolicyExtensions
                 .HandleTransientHttpError()
                 .WaitAndRetryAsync(3, _ => TimeSpan.FromMilliseconds(100));
+
+
+        private static T GetValueOrThrow<T>(T? value) 
+            => value is null || value is string str && string.IsNullOrEmpty(str)
+                ? throw new ArgumentException($"{nameof(value)} cannot be null") 
+                : value;
     }
 }
