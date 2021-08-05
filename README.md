@@ -44,7 +44,7 @@ public class SomeService
     
     public async Task SomeMethod()
     {
-        var (_, isFailure, virtualCreditCard, error) = await _vccService.IssueVirtualCreditCard(referenceCode, moneyAmount, dueDate);
+        var (_, isFailure, virtualCreditCard, error) = await _vccService.IssueVirtualCreditCard(referenceCode, moneyAmount, activationDate, dueDate);
     }
 }
 ```
