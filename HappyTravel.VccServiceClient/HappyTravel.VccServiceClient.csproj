@@ -8,11 +8,11 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <NeutralLanguage>en</NeutralLanguage>
     <Description>Client for VCC service</Description>
-    <PackageReleaseNotes>Added ability to set activation date for card</PackageReleaseNotes>
+    <PackageReleaseNotes>Updated Money package version</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/happy-travel/vcc-service-client</PackageProjectUrl>
     <RepositoryURL>https://github.com/happy-travel/vcc-service-client</RepositoryURL>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>0.10.0</Version>
+    <Version>0.11.0</Version>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="CSharpFunctionalExtensions" Version="2.15.3" />
