@@ -3,12 +3,12 @@
     <TargetFramework>net5.0</TargetFramework>
     <Nullable>enable</Nullable>
     <Copyright>HappyTravel.com</Copyright>
-    <Authors>Denis Nikolaev</Authors>
+    <Authors>Denis Nikolaev, Vadim Mingazhev</Authors>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <NeutralLanguage>en</NeutralLanguage>
     <Description>Client for VCC service</Description>
-    <PackageReleaseNotes>Updated Money package version</PackageReleaseNotes>
+    <PackageReleaseNotes>Fixed serialization errors</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/happy-travel/vcc-service-client</PackageProjectUrl>
     <RepositoryURL>https://github.com/happy-travel/vcc-service-client</RepositoryURL>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
