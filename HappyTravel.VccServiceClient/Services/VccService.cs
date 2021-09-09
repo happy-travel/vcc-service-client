@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
@@ -21,13 +22,18 @@ namespace HappyTravel.VccServiceClient.Services
         }
         
         
-        public async Task<Result<VirtualCreditCard>> IssueVirtualCreditCard(string referenceCode, MoneyAmount moneyAmount, DateTime activationDate, DateTime dueDate)
+        public async Task<Result<VirtualCreditCard>> IssueVirtualCreditCard(string referenceCode, MoneyAmount moneyAmount, 
+            DateTime activationDate, DateTime dueDate, Dictionary<string, string> specialValues)
         {
             using var client = _clientFactory.CreateClient(HttpClientNames.ApiClient);
             
             var request = new HttpRequestMessage(HttpMethod.Post, _options.Endpoint)
             {
-                Content = new StringContent(JsonSerializer.Serialize(new VccIssueRequest(referenceCode, moneyAmount, activationDate, dueDate)),
+                Content = new StringContent(JsonSerializer.Serialize(new VccIssueRequest(referenceCode: referenceCode, 
+                        moneyAmount: moneyAmount, 
+                        activationDate: activationDate, 
+                        dueDate: dueDate, 
+                        specialValues: specialValues)),
                     Encoding.UTF8, "application/json")
             };
             
