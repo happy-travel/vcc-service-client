@@ -8,5 +8,6 @@ namespace HappyTravel.VccServiceClient.Models
         public DateTime Expiry { get; init;}
         public string Holder { get; init;}
         public string Code { get; init;}
+        public CreditCardTypes Type { get; init; }
     }
 }
