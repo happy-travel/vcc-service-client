@@ -44,6 +44,36 @@ namespace HappyTravel.VccServiceClient.Services
                 : await GetError(response.Content);
         }
 
+        
+        public async Task<Result> ModifyAmount(string referenceCode, MoneyAmount amount)
+        {
+            using var client = _clientFactory.CreateClient(HttpClientNames.ApiClient);
+            
+            var request = new HttpRequestMessage(HttpMethod.Put, $"{_options.Endpoint}/{referenceCode}")
+            {
+                Content = new StringContent(JsonSerializer.Serialize(amount), Encoding.UTF8, "application/json")
+            };
+            
+            var response = await client.SendAsync(request);
+
+            return response.IsSuccessStatusCode
+                ? Result.Success()
+                : await GetError(response.Content);
+        }
+
+        
+        public async Task<Result> Delete(string referenceCode)
+        {
+            using var client = _clientFactory.CreateClient(HttpClientNames.ApiClient);
+
+            var request = new HttpRequestMessage(HttpMethod.Delete, $"{_options.Endpoint}/{referenceCode}");
+            var response = await client.SendAsync(request);
+
+            return response.IsSuccessStatusCode
+                ? Result.Success()
+                : await GetError(response.Content);
+        }
+
 
         private static async Task<Result<VirtualCreditCard>> GetError(HttpContent content)
         {

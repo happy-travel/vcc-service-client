@@ -11,5 +11,9 @@ namespace HappyTravel.VccServiceClient.Services
     {
         Task<Result<VirtualCreditCard>> IssueVirtualCreditCard(string referenceCode, MoneyAmount moneyAmount, 
             DateTime activationDate, DateTime dueDate, Dictionary<string, string> specialValues);
+
+        Task<Result> ModifyAmount(string referenceCode, MoneyAmount amount);
+        
+        Task<Result> Delete(string referenceCode);
     }
 }
