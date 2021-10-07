@@ -13,7 +13,9 @@ namespace HappyTravel.VccServiceClient.Services
             DateTime activationDate, DateTime dueDate, Dictionary<string, string> specialValues);
 
         Task<Result> ModifyAmount(string referenceCode, MoneyAmount amount);
-        
+
+        Task<Result> Edit(string referenceCode, VccEditRequest changes);
+
         Task<Result> Delete(string referenceCode);
     }
 }

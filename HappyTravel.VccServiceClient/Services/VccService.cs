@@ -61,7 +61,24 @@ namespace HappyTravel.VccServiceClient.Services
                 : await GetError(response.Content);
         }
 
-        
+
+        public async Task<Result> Edit(string referenceCode, VccEditRequest changes)
+        {
+            using var client = _clientFactory.CreateClient(HttpClientNames.ApiClient);
+            
+            var request = new HttpRequestMessage(HttpMethod.Post, $"{_options.Endpoint}/{referenceCode}/edit")
+            {
+                Content = new StringContent(JsonSerializer.Serialize(changes), Encoding.UTF8, "application/json")
+            };
+            
+            var response = await client.SendAsync(request);
+
+            return response.IsSuccessStatusCode
+                ? Result.Success()
+                : await GetError(response.Content);
+        }
+
+
         public async Task<Result> Delete(string referenceCode)
         {
             using var client = _clientFactory.CreateClient(HttpClientNames.ApiClient);
