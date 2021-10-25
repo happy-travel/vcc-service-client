@@ -77,8 +77,19 @@ namespace HappyTravel.VccServiceClient.Services
 
         private static async Task<Result<VirtualCreditCard>> GetError(HttpContent content)
         {
-            var error = await JsonSerializer.DeserializeAsync<ProblemDetails>(await content.ReadAsStreamAsync(), SerializerOptions);
-            return Result.Failure<VirtualCreditCard>(error?.Detail ?? await content.ReadAsStringAsync());
+            string error;
+
+            try
+            {
+                var problemDetails = await JsonSerializer.DeserializeAsync<ProblemDetails>(await content.ReadAsStreamAsync(), SerializerOptions);
+                error = problemDetails?.Detail ?? string.Empty;
+            }
+            catch (JsonException)
+            {
+                error = await content.ReadAsStringAsync();
+            }
+            
+            return Result.Failure<VirtualCreditCard>(error);
         }
 
 
