@@ -8,11 +8,11 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <NeutralLanguage>en</NeutralLanguage>
     <Description>Client for VCC service</Description>
-    <PackageReleaseNotes>Updated Money package</PackageReleaseNotes>
+    <PackageReleaseNotes>Added the CreditCardTypes property to the VccIssueRequest model</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/happy-travel/vcc-service-client</PackageProjectUrl>
     <RepositoryURL>https://github.com/happy-travel/vcc-service-client</RepositoryURL>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>0.15.2</Version>
+    <Version>0.15.3</Version>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="CSharpFunctionalExtensions" Version="2.15.3" />
