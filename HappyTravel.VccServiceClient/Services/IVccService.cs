@@ -9,7 +9,7 @@ namespace HappyTravel.VccServiceClient.Services
 {
     public interface IVccService
     {
-        Task<Result<VirtualCreditCard>> IssueVirtualCreditCard(string referenceCode, MoneyAmount moneyAmount, 
+        Task<Result<VirtualCreditCard>> IssueVirtualCreditCard(string referenceCode, MoneyAmount moneyAmount, CreditCardTypes? type,
             DateTime activationDate, DateTime dueDate, Dictionary<string, string> specialValues);
 
         Task<Result> ModifyAmount(string referenceCode, MoneyAmount amount);

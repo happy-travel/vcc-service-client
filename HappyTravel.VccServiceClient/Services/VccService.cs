@@ -22,7 +22,7 @@ namespace HappyTravel.VccServiceClient.Services
         }
         
         
-        public async Task<Result<VirtualCreditCard>> IssueVirtualCreditCard(string referenceCode, MoneyAmount moneyAmount, 
+        public async Task<Result<VirtualCreditCard>> IssueVirtualCreditCard(string referenceCode, MoneyAmount moneyAmount, CreditCardTypes? type,
             DateTime activationDate, DateTime dueDate, Dictionary<string, string> specialValues)
         {
             using var client = _clientFactory.CreateClient(HttpClientNames.ApiClient);
@@ -31,6 +31,7 @@ namespace HappyTravel.VccServiceClient.Services
             {
                 Content = new StringContent(JsonSerializer.Serialize(new VccIssueRequest(referenceCode: referenceCode, 
                         moneyAmount: moneyAmount, 
+                        type: type,
                         activationDate: activationDate, 
                         dueDate: dueDate, 
                         specialValues: specialValues)),
