@@ -23,7 +23,7 @@ namespace HappyTravel.VccServiceClient.Services
         
         
         public async Task<Result<VirtualCreditCard>> IssueVirtualCreditCard(string referenceCode, MoneyAmount moneyAmount, List<CreditCardTypes>? types,
-            DateTime activationDate, DateTime dueDate, Dictionary<string, string> specialValues)
+            DateTimeOffset activationDate, DateTimeOffset dueDate, Dictionary<string, string> specialValues)
         {
             using var client = _clientFactory.CreateClient(HttpClientNames.ApiClient);
             
