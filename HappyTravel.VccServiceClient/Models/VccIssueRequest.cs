@@ -7,7 +7,7 @@ namespace HappyTravel.VccServiceClient.Models
     internal readonly struct VccIssueRequest
     {
         public VccIssueRequest(string referenceCode, MoneyAmount moneyAmount, List<CreditCardTypes>? types,
-            DateTime activationDate, DateTime dueDate, Dictionary<string, string> specialValues)
+            DateTimeOffset activationDate, DateTimeOffset dueDate, Dictionary<string, string> specialValues)
         {
             ReferenceCode = referenceCode;
             MoneyAmount = moneyAmount;
@@ -21,8 +21,8 @@ namespace HappyTravel.VccServiceClient.Models
         public string ReferenceCode { get; }
         public MoneyAmount MoneyAmount { get; }
         public List<CreditCardTypes>? Types { get; }
-        public DateTime ActivationDate { get; }
-        public DateTime DueDate { get; }
+        public DateTimeOffset ActivationDate { get; }
+        public DateTimeOffset DueDate { get; }
         public Dictionary<string, string> SpecialValues { get; }
     }
 }
