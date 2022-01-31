@@ -15,19 +15,16 @@ namespace HappyTravel.VccServiceClient.Services
 {
     public class VccService : IVccService
     {
-        public VccService(IHttpClientFactory clientFactory, IOptions<HttpClientOptions> options)
+        public VccService(HttpClient client)
         {
-            _clientFactory = clientFactory;
-            _options = options.Value;
+            _client = client;
         }
         
         
         public async Task<Result<VirtualCreditCard>> IssueVirtualCreditCard(string referenceCode, MoneyAmount moneyAmount, List<CreditCardTypes>? types,
             DateTimeOffset activationDate, DateTimeOffset dueDate, Dictionary<string, string> specialValues)
         {
-            using var client = _clientFactory.CreateClient(HttpClientNames.ApiClient);
-            
-            var request = new HttpRequestMessage(HttpMethod.Post, _options.Endpoint)
+            var request = new HttpRequestMessage(HttpMethod.Post, string.Empty)
             {
                 Content = new StringContent(JsonSerializer.Serialize(new VccIssueRequest(referenceCode: referenceCode, 
                         moneyAmount: moneyAmount, 
@@ -38,7 +35,7 @@ namespace HappyTravel.VccServiceClient.Services
                     Encoding.UTF8, "application/json")
             };
             
-            var response = await client.SendAsync(request);
+            var response = await _client.SendAsync(request);
 
             return response.IsSuccessStatusCode
                 ? await GetVirtualCreditCard(response.Content)
@@ -48,14 +45,12 @@ namespace HappyTravel.VccServiceClient.Services
         
         public async Task<Result> ModifyAmount(string referenceCode, MoneyAmount amount)
         {
-            using var client = _clientFactory.CreateClient(HttpClientNames.ApiClient);
-            
-            var request = new HttpRequestMessage(HttpMethod.Put, $"{_options.Endpoint}/{referenceCode}")
+            var request = new HttpRequestMessage(HttpMethod.Put, $"{referenceCode}")
             {
                 Content = new StringContent(JsonSerializer.Serialize(amount), Encoding.UTF8, "application/json")
             };
             
-            var response = await client.SendAsync(request);
+            using var response = await _client.SendAsync(request);
 
             return response.IsSuccessStatusCode
                 ? Result.Success()
@@ -65,10 +60,8 @@ namespace HappyTravel.VccServiceClient.Services
         
         public async Task<Result> Delete(string referenceCode)
         {
-            using var client = _clientFactory.CreateClient(HttpClientNames.ApiClient);
-
-            var request = new HttpRequestMessage(HttpMethod.Delete, $"{_options.Endpoint}/{referenceCode}");
-            var response = await client.SendAsync(request);
+            var request = new HttpRequestMessage(HttpMethod.Delete, $"{referenceCode}");
+            using var response = await _client.SendAsync(request);
 
             return response.IsSuccessStatusCode
                 ? Result.Success()
@@ -100,7 +93,6 @@ namespace HappyTravel.VccServiceClient.Services
 
         private static readonly JsonSerializerOptions SerializerOptions = new () { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
 
-        private readonly IHttpClientFactory _clientFactory;
-        private readonly HttpClientOptions _options;
+        private readonly HttpClient _client;
     }
 }
