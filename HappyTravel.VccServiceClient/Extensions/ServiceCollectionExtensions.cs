@@ -15,27 +15,14 @@ namespace HappyTravel.VccServiceClient.Extensions
         {
             var vccClientOptions = new VccClientOptions();
             options.Invoke(vccClientOptions);
-            
-            services.Configure<HttpClientOptions>(o =>
-            {
-                o.Endpoint = GetValueOrThrow(vccClientOptions.VccEndpoint);
-            });
-            
-            services.AddAccessTokenManagement(o =>
-            {
-                o.Client.Clients.Add(HttpClientNames.Identity, new ClientCredentialsTokenRequest
+
+            services.AddHttpClient<IVccService, VccService>(client =>
                 {
-                    Address = GetValueOrThrow(vccClientOptions.IdentityEndpoint),
-                    ClientId = GetValueOrThrow(vccClientOptions.IdentityClient),
-                    ClientSecret = GetValueOrThrow(vccClientOptions.IdentitySecret)
-                });
-            });
-            
-            services.AddHttpClient(HttpClientNames.ApiClient)
+                    client.BaseAddress = new Uri(GetValueOrThrow(vccClientOptions.VccEndpoint));
+                })
                 .AddPolicyHandler(vccClientOptions.RetryPolicy ?? GetDefaultRetryPolicy())
-                .AddClientAccessTokenHandler(HttpClientNames.Identity);
+                .AddClientAccessTokenHandler(vccClientOptions.IdentityClientName);
             
-            services.AddTransient<IVccService, VccService>();
             return services;
         }
         
