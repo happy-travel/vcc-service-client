@@ -8,11 +8,11 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <NeutralLanguage>en</NeutralLanguage>
     <Description>Client for VCC service</Description>
-    <PackageReleaseNotes>Updated Money package version</PackageReleaseNotes>
+    <PackageReleaseNotes>Updated packages</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/happy-travel/vcc-service-client</PackageProjectUrl>
     <RepositoryURL>https://github.com/happy-travel/vcc-service-client</RepositoryURL>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="CSharpFunctionalExtensions" Version="2.28.2" />
