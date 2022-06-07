@@ -24,18 +24,15 @@ namespace HappyTravel.VccServiceClient.Services
         public async Task<Result<VirtualCreditCard>> IssueVirtualCreditCard(string referenceCode, MoneyAmount moneyAmount, List<CreditCardTypes>? types,
             DateTimeOffset activationDate, DateTimeOffset dueDate, Dictionary<string, string> specialValues)
         {
-            var request = new HttpRequestMessage(HttpMethod.Post, string.Empty)
-            {
-                Content = new StringContent(JsonSerializer.Serialize(new VccIssueRequest(referenceCode: referenceCode, 
-                        moneyAmount: moneyAmount, 
-                        types: types,
-                        activationDate: activationDate, 
-                        dueDate: dueDate, 
-                        specialValues: specialValues)),
-                    Encoding.UTF8, "application/json")
-            };
+            var content = new StringContent(JsonSerializer.Serialize(new VccIssueRequest(referenceCode: referenceCode,
+                    moneyAmount: moneyAmount,
+                    types: types,
+                    activationDate: activationDate,
+                    dueDate: dueDate,
+                    specialValues: specialValues)),
+                Encoding.UTF8, "application/json");
             
-            var response = await _client.SendAsync(request);
+            var response = await _client.PostAsync(string.Empty, content);
 
             return response.IsSuccessStatusCode
                 ? await GetVirtualCreditCard(response.Content)
