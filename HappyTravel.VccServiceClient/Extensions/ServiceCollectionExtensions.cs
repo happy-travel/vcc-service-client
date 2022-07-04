@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Net.Http;
 using HappyTravel.VccServiceClient.Options;
 using HappyTravel.VccServiceClient.Services;
@@ -19,6 +20,10 @@ namespace HappyTravel.VccServiceClient.Extensions
             services.AddHttpClient<IVccService, VccService>(client =>
                 {
                     client.BaseAddress = new Uri(GetValueOrThrow(vccClientOptions.VccEndpoint));
+                })
+                .ConfigurePrimaryHttpMessageHandler(_ => new HttpClientHandler
+                {
+                    AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip
                 })
                 .AddPolicyHandler(vccClientOptions.RetryPolicy ?? GetDefaultRetryPolicy())
                 .AddClientAccessTokenHandler(vccClientOptions.IdentityClientName);
