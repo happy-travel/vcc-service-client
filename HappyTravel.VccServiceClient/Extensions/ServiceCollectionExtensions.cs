@@ -20,6 +20,10 @@ namespace HappyTravel.VccServiceClient.Extensions
                 {
                     client.BaseAddress = new Uri(GetValueOrThrow(vccClientOptions.VccEndpoint));
                 })
+                .ConfigurePrimaryHttpMessageHandler(_ => new HttpClientHandler
+                {
+                    AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip
+                })
                 .AddPolicyHandler(vccClientOptions.RetryPolicy ?? GetDefaultRetryPolicy())
                 .AddClientAccessTokenHandler(vccClientOptions.IdentityClientName);
             
