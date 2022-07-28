@@ -12,10 +12,10 @@
     <PackageProjectUrl>https://github.com/happy-travel/vcc-service-client</PackageProjectUrl>
     <RepositoryURL>https://github.com/happy-travel/vcc-service-client</RepositoryURL>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>1.1.0</Version>
+    <Version>1.1.1</Version>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="CSharpFunctionalExtensions" Version="2.29.4" />
+    <PackageReference Include="CSharpFunctionalExtensions" Version="2.31.0" />
     <PackageReference Include="HappyTravel.Money" Version="1.5.0" />
     <PackageReference Include="IdentityModel" Version="6.0.0" />
     <PackageReference Include="IdentityModel.AspNetCore" Version="4.3.0" />
